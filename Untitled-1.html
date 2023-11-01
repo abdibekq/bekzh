@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Пример jQuery анимации и Ajax</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#animateBtn").click(function() {
+                $("#box").animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    height: '150px',
+                    width: '150px'
+                }, 2000);
+            });
+
+            $("#getBtn").click(function() {
+                $.get("example.php", function(data) {
+                    $("#result").html(data);
+                });
+            });
+
+            $("#postBtn").click(function() {
+                $.post("example.php", {
+                    name: "John",
+                    age: 30
+                }, function(data) {
+                    $("#result").html(data);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="box" style="background-color: #641c4f; width: 150px; height: 150px; position: absolute; margin-top:100px ;"></div>
+    <button id="animateBtn">Animation</button>
+    <button id="getBtn">GET Request</button>
+    <button id="postBtn">POST Request</button>
+    <div id="result"></div>
+
+</body>
+
+</html>
